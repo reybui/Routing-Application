@@ -44,7 +44,19 @@ public class MapEngine {
 
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
-    // add code here
+    MessageCli.INSERT_COUNTRY.printMessage();
+    String countryName = Utils.scanner.nextLine();
+    while (true) {
+      try {
+        Country country = riskGraph.getCountry(countryName);
+        MessageCli.COUNTRY_INFO.printMessage(
+            country.getName(), country.getContinent(), Integer.toString(country.getTaxFees()));
+        break;
+      } catch (CountryNotFoundException e) {
+        MessageCli.INVALID_COUNTRY.printMessage(countryName);
+        countryName = Utils.scanner.nextLine();
+      }
+    }
   }
 
   /** this method is invoked when the user run the command route. */

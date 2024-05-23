@@ -19,7 +19,7 @@ public class Country {
     return continent;
   }
 
-  public double getTaxFees() {
+  public int getTaxFees() {
     return taxFees;
   }
 

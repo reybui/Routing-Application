@@ -26,4 +26,11 @@ public class RiskGraph {
     graph.get(country1).add(country2);
     graph.get(country2).add(country1);
   }
+
+  public Country getCountry(String name) throws CountryNotFoundException {
+    if (!countries.containsKey(name)) {
+      throw new CountryNotFoundException();
+    }
+    return countries.get(name);
+  }
 }
