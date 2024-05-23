@@ -1,3 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class RiskGraph {}
+public class RiskGraph {
+
+  
+}

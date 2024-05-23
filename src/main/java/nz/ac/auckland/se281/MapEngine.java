@@ -14,7 +14,20 @@ public class MapEngine {
   private void loadMap() {
     List<String> countries = Utils.readCountries();
     List<String> adjacencies = Utils.readAdjacencies();
-    // add code here to create your data structures
+    
+    // create countries and add it to the graph
+    for(String c : countries) {
+      // parse the country data
+      String[] countryData = c.split(",");
+      String name = countryData[0];
+      String continent = countryData[1];
+      int taxFees = Integer.parseInt(countryData[2]);
+
+      // create the country object
+      Country country = new Country(name, continent, taxFees);
+
+    }
+
   }
 
   /** this method is invoked when the user run the command info-country. */
