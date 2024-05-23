@@ -45,8 +45,9 @@ public class MapEngine {
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
     MessageCli.INSERT_COUNTRY.printMessage();
-    String countryName = Utils.scanner.nextLine();
     while (true) {
+      String countryName = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
+
       try {
         Country country = riskGraph.getCountry(countryName);
         MessageCli.COUNTRY_INFO.printMessage(
@@ -54,7 +55,6 @@ public class MapEngine {
         break;
       } catch (CountryNotFoundException e) {
         MessageCli.INVALID_COUNTRY.printMessage(countryName);
-        countryName = Utils.scanner.nextLine();
       }
     }
   }
