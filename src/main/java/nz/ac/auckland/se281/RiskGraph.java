@@ -8,7 +8,7 @@ import java.util.Map;
 public class RiskGraph {
 
   private Map<String, Country> countries;
-  private Map<String, List<String>> graph;
+  private Map<String, List<String>> graph; // LinkedhashSet ???
 
   public RiskGraph() {
     countries = new HashMap<>();

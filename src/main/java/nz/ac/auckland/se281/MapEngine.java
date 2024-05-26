@@ -45,14 +45,18 @@ public class MapEngine {
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
     MessageCli.INSERT_COUNTRY.printMessage();
+    Country country = getCountryInput();
+    MessageCli.COUNTRY_INFO.printMessage(
+        country.getName(), country.getContinent(), Integer.toString(country.getTaxFees()));
+  }
+
+  public Country getCountryInput() {
     while (true) {
       String countryName = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
 
       try {
         Country country = riskGraph.getCountry(countryName);
-        MessageCli.COUNTRY_INFO.printMessage(
-            country.getName(), country.getContinent(), Integer.toString(country.getTaxFees()));
-        break;
+        return country;
       } catch (CountryNotFoundException e) {
         MessageCli.INVALID_COUNTRY.printMessage(countryName);
       }
@@ -60,5 +64,11 @@ public class MapEngine {
   }
 
   /** this method is invoked when the user run the command route. */
-  public void showRoute() {}
+  public void showRoute() {
+    MessageCli.INSERT_SOURCE.printMessage();
+    Country source = getCountryInput();
+    MessageCli.INSERT_DESTINATION.printMessage();
+    Country destination = getCountryInput();
+    MessageCli.ROUTE_INFO.printMessage("[" + source.getName() + ", " + destination.getName() + "]");
+  }
 }
