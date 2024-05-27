@@ -50,10 +50,16 @@ public class MapEngine {
         country.getName(), country.getContinent(), Integer.toString(country.getTaxFees()));
   }
 
+    /**
+     * Get the country input from the user.
+     * @return the country object
+     */
   public Country getCountryInput() {
+    // get the country name from the user
     while (true) {
       String countryName = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
 
+      // check if the country exists
       try {
         Country country = riskGraph.getCountry(countryName);
         return country;
@@ -76,10 +82,13 @@ public class MapEngine {
       return;
     }
 
+    // get the shortest path between the two countries
     List<String> path = riskGraph.bfsShortestPath(source.getName(), destination.getName());
 
+    // get totoal fees
     int totalFees = riskGraph.getTaxFees(path);
 
+    // get the continents
     StringBuilder continents = new StringBuilder();
     continents.append("[");
     String lastContinent = "";
@@ -100,6 +109,7 @@ public class MapEngine {
     }
     continents.append("]");
 
+    // print the results
     MessageCli.ROUTE_INFO.printMessage(path.toString());
     MessageCli.CONTINENT_INFO.printMessage(continents.toString());
     MessageCli.TAX_INFO.printMessage(Integer.toString(totalFees));

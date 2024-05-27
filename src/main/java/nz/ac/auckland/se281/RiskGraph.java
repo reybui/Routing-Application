@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+/**
+ * Represents a graph of countries and their connections. It can find the shortest path between two
+ */
 public class RiskGraph {
 
   private Map<String, Country> countries;
@@ -28,9 +31,14 @@ public class RiskGraph {
   // adds an edge between two countries
   public void addEdge(String country1, String country2) {
     graph.get(country1).add(country2);
-    // graph.get(country2).add(country1);
   }
 
+  /**
+   * Returns the country object with the given name
+   * @param name country name
+   * @return country object
+   * @throws CountryNotFoundException if the country is not found
+   */
   public Country getCountry(String name) throws CountryNotFoundException {
     if (!countries.containsKey(name)) {
       throw new CountryNotFoundException();
@@ -38,7 +46,12 @@ public class RiskGraph {
     return countries.get(name);
   }
 
-  // BFS to find the shortest path between two countries
+  /**
+   * Returns the shortest path between two countries using BFS
+   * @param start country name
+   * @param end country name
+   * @return list of country names representing the shortest path
+   */
   public List<String> bfsShortestPath(String start, String end) {
     Queue<String> queue = new LinkedList<>();
     Map<String, String> previous = new HashMap<>();
@@ -62,6 +75,13 @@ public class RiskGraph {
     return Collections.emptyList(); // No path found
   }
 
+  /**
+   * Reconstructs the path from the start to the end using the previous map
+   * @param previous map of country names to their previous country
+   * @param start country name 
+   * @param end country name
+   * @return list of country names representing the path
+   */
   private List<String> reconstructPath(Map<String, String> previous, String start, String end) {
     List<String> path = new LinkedList<>();
     for (String at = end; at != null; at = previous.get(at)) {
@@ -71,6 +91,11 @@ public class RiskGraph {
     return path;
   }
 
+  /**
+   * Returns the total tax fees for the given path
+   * @param path list of country names representing the path
+   * @return total tax fees
+   */
   public int getTaxFees(List<String> path) {
     int taxFees = 0;
     for (String countryName : path) {

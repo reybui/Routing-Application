@@ -1,6 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class CountryNotFoundException extends Exception {
-  public CountryNotFoundException() {}
-  ;
-}
+/**
+ * Custom exception to be thrown when a country is not found.
+ */
+public class CountryNotFoundException extends Exception {}
