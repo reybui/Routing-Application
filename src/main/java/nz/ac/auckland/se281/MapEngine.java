@@ -71,6 +71,11 @@ public class MapEngine {
     Country destination = getCountryInput();
     List<String> path = riskGraph.bfsShortestPath(source.getName(), destination.getName());
 
+    if (source.getName().equals(destination.getName())) {
+      MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
+      return;
+    }
+
     MessageCli.ROUTE_INFO.printMessage(path.toString());
   }
 }
