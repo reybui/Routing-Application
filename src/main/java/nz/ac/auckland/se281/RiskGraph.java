@@ -12,7 +12,7 @@ import java.util.Set;
 public class RiskGraph {
 
   private Map<String, Country> countries;
-  private Map<String, List<String>> graph; // LinkedhashSet ???
+  private Map<String, List<String>> graph;
 
   public RiskGraph() {
     countries = new HashMap<>();
@@ -28,7 +28,7 @@ public class RiskGraph {
   // adds an edge between two countries
   public void addEdge(String country1, String country2) {
     graph.get(country1).add(country2);
-    graph.get(country2).add(country1);
+    // graph.get(country2).add(country1);
   }
 
   public Country getCountry(String name) throws CountryNotFoundException {
