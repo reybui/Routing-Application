@@ -69,6 +69,8 @@ public class MapEngine {
     Country source = getCountryInput();
     MessageCli.INSERT_DESTINATION.printMessage();
     Country destination = getCountryInput();
-    MessageCli.ROUTE_INFO.printMessage("[" + source.getName() + ", " + destination.getName() + "]");
+    List<String> path = riskGraph.bfsShortestPath(source.getName(), destination.getName());
+
+    MessageCli.ROUTE_INFO.printMessage(path.toString());
   }
 }

@@ -22,9 +22,4 @@ public class Country {
   public int getTaxFees() {
     return taxFees;
   }
-
-  // @Override
-  // public String toString() {
-  //   return String.format(MessageCli.COUNTRY_INFO.toString(), name, continent, taxFees);
-  // }
 }
