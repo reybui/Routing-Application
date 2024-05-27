@@ -63,11 +63,7 @@ public class MapEngine {
     }
   }
 
-  /**
-   * this method is invoked when the user run the command route.
-   *
-   * @throws CountryNotFoundException
-   */
+  /** this method is invoked when the user run the command route. */
   public void showRoute() {
     MessageCli.INSERT_SOURCE.printMessage();
     Country source = getCountryInput();
@@ -79,7 +75,10 @@ public class MapEngine {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
+
     List<String> path = riskGraph.bfsShortestPath(source.getName(), destination.getName());
+
+    int totalFees = riskGraph.getTaxFees(path);
 
     StringBuilder continents = new StringBuilder();
     continents.append("[");
@@ -101,7 +100,8 @@ public class MapEngine {
     }
     continents.append("]");
 
-    MessageCli.CONTINENT_INFO.printMessage(continents.toString());
     MessageCli.ROUTE_INFO.printMessage(path.toString());
+    MessageCli.CONTINENT_INFO.printMessage(continents.toString());
+    MessageCli.TAX_INFO.printMessage(Integer.toString(totalFees));
   }
 }

@@ -70,4 +70,13 @@ public class RiskGraph {
     Collections.reverse(path);
     return path;
   }
+
+  public int getTaxFees(List<String> path) {
+    int taxFees = 0;
+    for (String countryName : path) {
+      Country country = countries.get(countryName);
+      taxFees += country.getTaxFees();
+    }
+    return taxFees - countries.get(path.get(0)).getTaxFees();
+  }
 }
