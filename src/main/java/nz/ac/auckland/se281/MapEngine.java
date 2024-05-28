@@ -6,6 +6,7 @@ import java.util.List;
 public class MapEngine {
   private RiskGraph riskGraph;
 
+  /** Constructor for the MapEngine class. This is the main entry point for the application. */
   public MapEngine() {
     // add other code here if you want
     riskGraph = new RiskGraph();
@@ -50,10 +51,11 @@ public class MapEngine {
         country.getName(), country.getContinent(), Integer.toString(country.getTaxFees()));
   }
 
-    /**
-     * Get the country input from the user.
-     * @return the country object
-     */
+  /**
+   * Get the country input from the user.
+   *
+   * @return the country object.
+   */
   public Country getCountryInput() {
     // get the country name from the user
     while (true) {

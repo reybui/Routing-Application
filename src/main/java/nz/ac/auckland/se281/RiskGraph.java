@@ -9,9 +9,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * Represents a graph of countries and their connections. It can find the shortest path between two
- */
+/** Represents a graph of countries and their connections. */
 public class RiskGraph {
 
   private Map<String, Country> countries;
@@ -34,10 +32,11 @@ public class RiskGraph {
   }
 
   /**
-   * Returns the country object with the given name
-   * @param name country name
-   * @return country object
-   * @throws CountryNotFoundException if the country is not found
+   * Returns the country object with the given name.
+   *
+   * @param name country name.
+   * @return country object.
+   * @throws CountryNotFoundException if the country is not found.
    */
   public Country getCountry(String name) throws CountryNotFoundException {
     if (!countries.containsKey(name)) {
@@ -47,10 +46,11 @@ public class RiskGraph {
   }
 
   /**
-   * Returns the shortest path between two countries using BFS
-   * @param start country name
-   * @param end country name
-   * @return list of country names representing the shortest path
+   * Returns the shortest path between two countries using BFS.
+   *
+   * @param start country name.
+   * @param end country name.
+   * @return list of country names representing the shortest path.
    */
   public List<String> bfsShortestPath(String start, String end) {
     Queue<String> queue = new LinkedList<>();
@@ -76,11 +76,12 @@ public class RiskGraph {
   }
 
   /**
-   * Reconstructs the path from the start to the end using the previous map
-   * @param previous map of country names to their previous country
-   * @param start country name 
-   * @param end country name
-   * @return list of country names representing the path
+   * Reconstructs the path from the start to the end using the previous map.
+   *
+   * @param previous map of country names to their previous country.
+   * @param start country name .
+   * @param end country name.
+   * @return list of country names representing the path.
    */
   private List<String> reconstructPath(Map<String, String> previous, String start, String end) {
     List<String> path = new LinkedList<>();
@@ -92,9 +93,10 @@ public class RiskGraph {
   }
 
   /**
-   * Returns the total tax fees for the given path
-   * @param path list of country names representing the path
-   * @return total tax fees
+   * Returns the total tax fees for the given path.
+   *
+   * @param path list of country names representing the path.
+   * @return total tax fees.
    */
   public int getTaxFees(List<String> path) {
     int taxFees = 0;
